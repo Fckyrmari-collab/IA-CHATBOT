@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Shena - Asistente CENIGRAF</title>
   <style>
-    /* Paleta tomada de tu imagen de referencia */
     :root {
       --fondo-arriba: #e6e3f7;
       --fondo-abajo: #d9e6f0;
@@ -43,6 +42,25 @@
       letter-spacing: .05em;
     }
     header p { margin: .2rem 0 1rem; color: var(--primario); }
+
+    /* Preguntas frecuentes */
+    .faq {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .faq-btn {
+      padding: .5rem .9rem;
+      font-size: .9rem;
+      background: var(--burbuja-bot);
+      color: var(--texto-bot);
+      border: 1px solid var(--primario);
+    }
+    .faq-btn:hover {
+      background: var(--primario);
+      color: #fff;
+    }
 
     #chat {
       flex: 1;
@@ -106,8 +124,17 @@
       <p>Asistente de información - CENIGRAF</p>
     </header>
 
+    <!-- Botones de preguntas frecuentes -->
+    <div class="faq">
+      <button type="button" class="faq-btn" data-pregunta="¿Qué programas ofrece CENIGRAF?">¿Qué programas ofrece CENIGRAF?</button>
+      <button type="button" class="faq-btn" data-pregunta="¿Cuáles son los requisitos de inscripción?">¿Cuáles son los requisitos de inscripción?</button>
+      <button type="button" class="faq-btn" data-pregunta="¿Cómo es el proceso de matrícula?">¿Cómo es el proceso de matrícula?</button>
+      <button type="button" class="faq-btn" data-pregunta="¿Dónde se encuentra CENIGRAF?">¿Dónde se encuentra CENIGRAF?</button>
+      <button type="button" class="faq-btn" data-pregunta="¿Cuáles son los horarios?">¿Cuáles son los horarios?</button>
+    </div>
+
     <div id="chat" aria-live="polite">
-      <div class="mensaje bot">¡Hola! Soy Shena. Escribe un mensaje para empezar.</div>
+      <div class="mensaje bot">¡Hola! Soy Shena. Escribe un mensaje o elige una pregunta frecuente.</div>
     </div>
 
     <form id="form">
@@ -121,7 +148,6 @@
     const form = document.querySelector('#form');
     const input = document.querySelector('#message');
 
-    // Crea una burbuja; "quien" es 'bot' o 'usuario' y decide el color
     function agregarMensaje(quien, texto) {
       const div = document.createElement('div');
       div.className = 'mensaje ' + quien;
@@ -130,19 +156,16 @@
       chat.scrollTop = chat.scrollHeight;
     }
 
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const message = input.value.trim();
-      if (!message) return;
-
-      agregarMensaje('usuario', message);
-      input.value = '';
+    // Envía un texto al chatbot y muestra la respuesta.
+    // La usan el formulario Y los botones de preguntas frecuentes.
+    async function enviarMensaje(texto) {
+      agregarMensaje('usuario', texto);
 
       try {
         const response = await fetch('/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message })
+          body: JSON.stringify({ message: texto })
         });
         if (!response.ok) throw new Error('No se pudo obtener una respuesta.');
 
@@ -151,6 +174,22 @@
       } catch (error) {
         agregarMensaje('bot', 'Error: ' + error.message);
       }
+    }
+
+    // Al enviar el formulario
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const message = input.value.trim();
+      if (!message) return;
+      input.value = '';
+      enviarMensaje(message);
+    });
+
+    // Al hacer clic en una pregunta frecuente
+    document.querySelectorAll('.faq-btn').forEach((boton) => {
+      boton.addEventListener('click', () => {
+        enviarMensaje(boton.dataset.pregunta);
+      });
     });
   </script>
 </body>
