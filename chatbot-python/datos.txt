@@ -1,0 +1,192 @@
+el aprendiz estudia programacion
+el aprendiz desarrolla software
+el aprendiz programa en python
+el estudiante desarrolla aplicaciones
+el estudiante aprende inteligencia artificial
+el programador desarrolla software
+python permite crear aplicaciones
+flask permite crear apis
+react permite crear interfaces
+mysql permite almacenar datos
+
+Informacion general
+
+Fuente de Informacion
+
+Programas Tecnologos Presenciales
+1. Animacion 3D
+524703
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+2. Desarrollo de medios gráficos visuales
+522309
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+3. Gestión de procesos de preprensa
+922609
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+4. Supervisión de procesos gráficos
+922601
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+5. Fotografía y procesos digitales
+522100	
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+6. Animación digital
+513601
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+7. Análisis y desarrollo de software
+228118
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+8. Producción multimedia
+228101
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+
+Programas Tecnologos Virtuales
+Programas Tecnologos Virtuales
+1. Análisis y desarrollo de software
+228118
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+2. Animación 3D
+924118
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+3. Animación digital
+233101
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+4. Desarrollo de medios gráficos visuales
+524704
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+5. Desarrollo publicitario
+124100
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+6. Desarrollo multimedia y web
+217320
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+7. Desarrollo de videojuegos
+228108
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+8. Coordinación de procesos logísticos
+121523
+Duracion :27 meses
+Estado: Inscripciones NO abiertas
+
+Programas Tecnicos Presenciales
+
+1. Prensa digital
+937210
+Duracion :15 meses
+Estado: Inscripciones NO abiertas
+
+2. Impresión offset
+924102
+Duracion :15 meses
+Estado: Inscripciones NO abiertas
+
+3. Impresión flexográfica
+924103
+Duracion :15 meses
+Estado: Inscripciones NO abiertas
+
+4. Impresión serigráfica
+924104
+Duracion :15 meses
+Estado: Inscripciones NO abiertas
+
+5. Integración de contenidos digitales
+524704
+Duracion :15 meses
+Estado: Inscripciones NO abiertas
+
+6. Programación de software
+233104
+Duracion :15 meses
+Estado: Inscripciones NO abiertas
+
+7. Encuadernación y acabados
+924301
+Duracion :15 meses
+Estado: Inscripciones NO abiertas
+
+8. Elaboración de audiovisuales
+924100
+Duracion :15 meses
+Estado: Inscripciones NO abiertas
+
+9. Impresión digital
+233101
+Duracion :15 meses
+Estado: Inscripciones NO abiertas
+
+10. Sistemas teleinformáticos
+233108
+Duracion :15 meses
+Estado: Inscripciones NO abiertas
+
+Programas Tecnicos Virtuales
+
+1. Integración de contenidos digitales
+524704
+Duracion :15 meses
+Estado: Inscripciones NO abiertas
+
+2. Operaciones de comercio exterior
+134600
+Duracion :15 meses
+Estado: Inscripciones NO abiertas
+
+3. Preselección de talento humano
+134206
+Duracion :15 meses
+Estado: Inscripciones NO abiertas
+
+
+
+
+INFORMACION DE CONTACTO 
+
+Línea principal
++601 546 1500  ·  596 0100 Ext. 15 463
+Atención telefónica
+Lunes a viernes 7:00 a.m. – 7:00 p.m. · Sábados 8:00 a.m. – 1:00 p.m.
+Atención al ciudadano y PQRS
+Bogotá +(57) 601 7366060
+Línea gratuita nacional
+018000 910270
+Dirección
+Cra. 32 #15 - 80, Bogotá D.C.
+
+INFORMACION DE CENIGRAF
+¿Quiénes somos?
+Formamos profesionales en artes gráficas con metodologías innovadoras, acceso a tecnología de punta y un enfoque en el saber-hacer más que en la memorización. Preparamos ciudadanos críticos, solidarios y emprendedores, alineados con las tendencias del sector y las necesidades reales de la industria gráfica colombiana.
+Misión
+El SENA invierte en el desarrollo social y técnico de los trabajadores colombianos, ofreciendo formación profesional integral que impulsa su incorporación en actividades productivas para el país.
+Visión
+Ser referente en la cualificación del talento humano a nivel nacional e internacional, a través de la formación integral, el empleo, el emprendimiento y el reconocimiento de saberes previos.
+"Somos el punto de encuentro entre el talento calificado y el dinamismo empresarial que el país necesita."
