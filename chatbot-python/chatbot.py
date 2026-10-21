@@ -5,11 +5,11 @@ from pathlib import Path
 from typing import Dict, List
 
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from iagenerativa import generar_respuestas
 
-app = FastAPI(title="Chatbot básico - Shena", version="1.0.0")
+app = FastAPI(title="Chatbot básico - Sena", version="1.0.0")
 
 
 class ChatRequest(BaseModel):
@@ -152,9 +152,9 @@ def responder(mensaje: str) -> str:
     return "Segun los patrones de mis datos: " + respuesta
 
 
-@app.get("/", response_class=HTMLResponse)
-def pagina() -> str:
-    return HTML
+@app.get("/")
+def pagina():
+    return FileResponse(Path(__file__).with_name("index.html"))
 
 
 @app.get("/api/health")
@@ -170,64 +170,3 @@ async def chat(request: ChatRequest) -> ChatResponse:
 
 
 
-HTML = r"""<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Chatbot básico - Shena</title>
-  <style>
-    body { font: 16px system-ui, sans-serif; max-width: 680px; margin: 3rem auto; padding: 0 1rem; color: #202124; }
-    #chat { min-height: 260px; border: 1px solid #ddd; border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
-    .message { margin: .6rem 0; white-space: pre-wrap; }
-    form { display: flex; gap: .5rem; }
-    input { flex: 1; padding: .8rem; border: 1px solid #aaa; border-radius: 8px; }
-    button { padding: .8rem 1rem; border: 0; border-radius: 8px; background: #1459c7; color: white; cursor: pointer; }
-  </style>
-</head>
-<body>
-  <h1>Chatbot básico - Shena</h1>
-  <div id="chat" aria-live="polite"><p class="message">Bot: ¡Hola! Escribe un mensaje para empezar.</p></div>
-  <form id="form">
-    <input id="message" autocomplete="off" placeholder="Escribe tu mensaje…" required maxlength="2000">
-    <button type="submit">Enviar</button>
-  </form>
-  <script>
-    const chat = document.querySelector('#chat');
-    const form = document.querySelector('#form');
-    const input = document.querySelector('#message');
-
-    function addMessage(who, text) {
-      const p = document.createElement('p');
-      p.className = 'message';
-      p.textContent = `${who}: ${text}`;
-      chat.appendChild(p);
-      chat.scrollTop = chat.scrollHeight;
-    }
-
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const message = input.value.trim();
-      if (!message) return;
-
-      addMessage('Tú', message);
-      input.value = '';
-
-      try {
-        const response = await fetch('/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message })
-        });
-
-        if (!response.ok) throw new Error('No se pudo obtener una respuesta.');
-
-        const data = await response.json();
-        addMessage('Bot', data.reply);
-      } catch (error) {
-        addMessage('Bot', `Error: ${error.message}`);
-      }
-    });
-  </script>
-</body>
-</html>"""
