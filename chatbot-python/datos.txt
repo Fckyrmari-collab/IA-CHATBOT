@@ -1,13 +1,3 @@
-el aprendiz estudia programacion
-el aprendiz desarrolla software
-el aprendiz programa en python
-el estudiante desarrolla aplicaciones
-el estudiante aprende inteligencia artificial
-el programador desarrolla software
-python permite crear aplicaciones
-flask permite crear apis
-react permite crear interfaces
-mysql permite almacenar datos
 
 Informacion general
 
@@ -190,3 +180,15 @@ El SENA invierte en el desarrollo social y técnico de los trabajadores colombia
 Visión
 Ser referente en la cualificación del talento humano a nivel nacional e internacional, a través de la formación integral, el empleo, el emprendimiento y el reconocimiento de saberes previos.
 "Somos el punto de encuentro entre el talento calificado y el dinamismo empresarial que el país necesita."
+
+INFORMACION DEL CONTRATO DE APRENDIZAJE
+
+el contrato de aprendizaje en el SENA es una forma de vinculación especial (actualmente regulada también bajo la reforma y lineamientos recientes como la Ley 2466 de 2025 y el Decreto 0223 de 2026 del Ministerio del Trabajo) que permite a los estudiantes aplicar sus conocimientos en una empresa patrocinadora.
+
+Características principales
+
+• Fases del contrato:
+	• Etapa lectiva: El aprendiz recibe un apoyo de sostenimiento equivalente al 75% de un Salario Mínimo Legal Mensual Vigente (SMMLV). La empresa asume la afiliación a salud (EPS) y riesgos laborales (ARL).
+	• Etapa productiva (o práctica): El apoyo de sostenimiento equivale al 100% de un SMMLV, junto con la totalidad de la seguridad social (EPS, ARL y pensión) y prestaciones sociales.
+• Quiénes pueden ser aprendices: Estudiantes matriculados en programas de formación del SENA, educación superior (pregrado/posgrado), escuelas normales superiores o formación para el trabajo y desarrollo humano.
+• Obligación de las empresas: Las empresas privadas o públicas con 15 o más trabajadores (con excepción de la industria de la construcción) deben contratar aprendices según la cuota regulada de ley (1 aprendiz por cada 20 trabajadores y 1 adicional por fracción de 10 o más).
