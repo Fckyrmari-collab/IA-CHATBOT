@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shena - Asistente CENIGRAF</title>
+  <title> Senita - Asistente CENIGRAF</title>
   <style>
     :root {
       --fondo-arriba: #e6e3f7;
@@ -43,7 +43,6 @@
     }
     header p { margin: .2rem 0 1rem; color: var(--primario); }
 
-    /* Preguntas frecuentes */
     .faq {
       display: flex;
       flex-wrap: wrap;
@@ -94,6 +93,29 @@
       border-bottom-right-radius: 4px;
     }
 
+    /* Indicador "escribiendo" */
+    .escribiendo {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-style: italic;
+    }
+    .puntos { display: inline-flex; gap: 4px; }
+    .puntos span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primario);
+      animation: salto 1.2s infinite ease-in-out;
+    }
+    .puntos span:nth-child(2) { animation-delay: .2s; }
+    .puntos span:nth-child(3) { animation-delay: .4s; }
+
+    @keyframes salto {
+      0%, 60%, 100% { transform: translateY(0); opacity: .4; }
+      30% { transform: translateY(-5px); opacity: 1; }
+    }
+
     form { display: flex; gap: .5rem; }
     input {
       flex: 1;
@@ -115,16 +137,28 @@
       cursor: pointer;
     }
     button:hover { background: var(--primario-oscuro); }
+    button:disabled { opacity: .6; cursor: not-allowed; }
+
+
+    /*boton limpiar chat */
+    .barra { display: flex; justify-content: flex-end; margin-bottom: .5rem; }
+    .btn.limpiar {
+      padding: 5rem 1rem;
+      font-size: .9rem;
+      background: #4a4399
+    }
+    .btn-limpiar:hover { background: #9d93e3;}
+
   </style>
+
 </head>
 <body>
   <div class="app">
     <header>
-      <h1>SHENA</h1>
+      <h1>Senita</h1>
       <p>Asistente de información - CENIGRAF</p>
     </header>
 
-    <!-- Botones de preguntas frecuentes -->
     <div class="faq">
       <button type="button" class="faq-btn" data-pregunta="¿Qué programas ofrece CENIGRAF?">¿Qué programas ofrece CENIGRAF?</button>
       <button type="button" class="faq-btn" data-pregunta="¿Cuáles son los requisitos de inscripción?">¿Cuáles son los requisitos de inscripción?</button>
@@ -133,20 +167,27 @@
       <button type="button" class="faq-btn" data-pregunta="¿Cuáles son los horarios?">¿Cuáles son los horarios?</button>
     </div>
 
+    <div class="barra">
+    <button type="button" id="btn-limpiar" class="btn-limpiar">🗑 Limpiar chat</button>
+    </div>
+    
     <div id="chat" aria-live="polite">
-      <div class="mensaje bot">¡Hola! Soy Shena. Escribe un mensaje o elige una pregunta frecuente.</div>
+      <div class="mensaje bot">¡Hola! Soy Senita 🦜 . Escribe un mensaje o elige una pregunta frecuente.</div>
     </div>
 
     <form id="form">
       <input id="message" autocomplete="off" placeholder="Escribe tu mensaje…" required maxlength="2000">
-      <button type="submit">Enviar</button>
+      <button type="submit">Enviar 💮</button>
     </form>
   </div>
 
+  
   <script>
     const chat = document.querySelector('#chat');
     const form = document.querySelector('#form');
     const input = document.querySelector('#message');
+    const btnLimpiar = document.querySelector('#btn-limpiar');
+    const MENSAJE_INICIAL = '¡Hola! Soy Shena. Escribe un mensaje o elige una pregunta frecuente.';
 
     function agregarMensaje(quien, texto) {
       const div = document.createElement('div');
@@ -156,10 +197,43 @@
       chat.scrollTop = chat.scrollHeight;
     }
 
-    // Envía un texto al chatbot y muestra la respuesta.
-    // La usan el formulario Y los botones de preguntas frecuentes.
+    function mostrarEscribiendo() {
+      const div = document.createElement('div');
+      div.id = 'escribiendo';
+      div.className = 'mensaje bot escribiendo';
+      div.innerHTML =
+        '<span class="puntos"><span></span><span></span><span></span></span>' +
+        '<span>El chatbot está escribiendo…</span>';
+      chat.appendChild(div);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function ocultarEscribiendo() {
+      const div = document.querySelector('#escribiendo');
+      if (div) div.remove();
+    }
+
+    function bloquear(estado) {
+      input.disabled = estado;
+      btnLimpiar.disabled = estado;
+      document.querySelector('#form button').disabled = estado;
+      document.querySelectorAll('.faq-btn').forEach((b) => (b.disabled = estado));
+    }
+
+    // Borra la conversación visible, pidiendo confirmación antes
+    function limpiarChat() {
+      const confirmado = confirm('¿Seguro que quieres borrar toda la conversación?');
+      if (!confirmado) return;
+
+      chat.innerHTML = '';
+      agregarMensaje('bot', MENSAJE_INICIAL);
+      input.focus();
+    }
+
     async function enviarMensaje(texto) {
       agregarMensaje('usuario', texto);
+      bloquear(true);
+      mostrarEscribiendo();
 
       try {
         const response = await fetch('/api/chat', {
@@ -170,13 +244,18 @@
         if (!response.ok) throw new Error('No se pudo obtener una respuesta.');
 
         const data = await response.json();
+        ocultarEscribiendo();
         agregarMensaje('bot', data.reply);
       } catch (error) {
+        ocultarEscribiendo();
         agregarMensaje('bot', 'Error: ' + error.message);
+      } finally {
+        ocultarEscribiendo();
+        bloquear(false);
+        input.focus();
       }
     }
 
-    // Al enviar el formulario
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       const message = input.value.trim();
@@ -185,12 +264,13 @@
       enviarMensaje(message);
     });
 
-    // Al hacer clic en una pregunta frecuente
     document.querySelectorAll('.faq-btn').forEach((boton) => {
       boton.addEventListener('click', () => {
         enviarMensaje(boton.dataset.pregunta);
       });
     });
+
+    btnLimpiar.addEventListener('click', limpiarChat);
   </script>
 </body>
 </html>
